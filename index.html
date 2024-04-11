@@ -14,7 +14,15 @@
       document
         .getElementById("sendEvent")
         .addEventListener("click", function () {
-          window.ReactNativeWebView.postMessage("Hello from Webview");
+          try {
+            window.ReactNativeWebView.postMessage("Hello from Webview");
+          } catch (error) {
+            console.error(
+              "Error sending event with ReactNativeWebView: ",
+              error
+            );
+            window.postMessage("Hello from Webview", "*");
+          }
         });
 
       // listen to messages from react native
