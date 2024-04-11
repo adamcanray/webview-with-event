@@ -14,14 +14,19 @@
       document
         .getElementById("sendEvent")
         .addEventListener("click", function () {
+          const message = {
+            message: "Hello from Webview",
+            status: "Success",
+            success: true,
+          };
           try {
-            window.ReactNativeWebView.postMessage("Hello from Webview");
+            window.ReactNativeWebView.postMessage(message);
           } catch (error) {
             console.error(
               "Error sending event with ReactNativeWebView: ",
               error
             );
-            window.postMessage("Hello from Webview", "*");
+            window.postMessage(message, "*");
           }
         });
 
